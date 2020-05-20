@@ -1,9 +1,7 @@
 FROM openjdk:8-jre-buster
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
-    software-properties-common
-RUN add-apt-repository universe
-RUN apt-get update && apt-get install -y \
+    software-properties-common \
     apache2 \
     curl \
     git \
