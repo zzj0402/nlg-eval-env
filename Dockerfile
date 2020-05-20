@@ -10,5 +10,5 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /root/
 RUN git clone https://github.com/Maluuba/nlg-eval.git
 WORKDIR /root/nlg-eval/
-RUN pip install -r requirements.txt
-RUN python setup.py
+RUN pip3 install -r requirements.txt
+RUN python3 setup.py
