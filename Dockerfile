@@ -5,8 +5,11 @@ RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata \
     software-properties-common \
     curl \
     vim \
-    htop \
-    openjdk8-jre
+    htop
+RUN apt-get install software-properties-common && \
+    add-apt-repository ppa:webupd8team/java && \
+    apt-get update && \
+    apt-get install oracle-java8-installer
 RUN build_deps="curl" && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ${build_deps} ca-certificates && \
