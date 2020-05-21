@@ -1,14 +1,11 @@
-FROM openjdk:8-jre-buster
+FROM pytorch/pytorch:1.5-cuda10.1-cudnn7-devel
 ENV TZ=Pacific/Auckland
-RUN apt-get update
-RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
-RUN apt-get install -y \
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata \
     software-properties-common \
     curl \
-    git-all \
     vim \
-    python3.6 \
-    python3-pip
+    htop \
+    openjdk8-jre
 RUN build_deps="curl" && \
     apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends ${build_deps} ca-certificates && \
@@ -18,5 +15,5 @@ RUN build_deps="curl" && \
     DEBIAN_FRONTEND=noninteractive apt-get purge -y --auto-remove ${build_deps} && \
     rm -r /var/lib/apt/lists/*
 WORKDIR /root/
-RUN pip3 install git+https://github.com/Maluuba/nlg-eval.git@master
+RUN pip install git+https://github.com/Maluuba/nlg-eval.git@master
 RUN nlg-eval --setup
