@@ -1,9 +1,11 @@
 FROM openjdk:8-jre-buster
-ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Pacific/Auckland
+RUN apt-get update
+RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
 RUN apt-get update && apt-get install -y \
     software-properties-common \
     curl \
-    git \
+    git-all \
     vim \
     python3.6 \
     python3-pip
