@@ -2,7 +2,7 @@ FROM openjdk:8-jre-buster
 ENV TZ=Pacific/Auckland
 RUN apt-get update
 RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
-RUN apt-get update && apt-get install -y \
+RUN apt-get install -y \
     software-properties-common \
     curl \
     git-all \
